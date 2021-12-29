@@ -17,7 +17,6 @@ app.use(cors());
 app.use(checkToken)
 
 // 静态文件
-// app.use(static('./'))
 app.use(static('./'))
 // 路由
 app.use(router.routes()).use(router.allowedMethods());

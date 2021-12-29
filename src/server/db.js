@@ -28,29 +28,6 @@ let sqlQueryConfig = {
             })
         })
     },
-    findUserData() {
-        let _sql = `select * from user`;
-        return this.query(_sql);
-    },
-    addUserData(options) {
-        let _sql = `insert into user (user_name,password) values ('秦明334','123422')`;
-        return this.query(_sql)
-    },
-    async signIn(options) {
-        let _sql = `select * from user where user_name="${options.username}" AND 
-            password="${options.password}" limit 1
-        `
-        let list = await this.query(_sql);
-        if (list.length > 0) {
-            return {
-                code: 200, data: {}, messaage: '匹配成功'
-            }
-        } else {
-            return {
-                code: 500, data: {}, messaage: '账号密码错误'
-            }
-        }
-    }
 }
 
 module.exports = sqlQueryConfig;

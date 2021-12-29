@@ -11,7 +11,7 @@
 添加数据
 
 ### 博客地址
-[mysql语句](https://www.cnblogs.com/zquan/p/9635019.html)
-[阿里云安装MySql](https://blog.csdn.net/qq_45441466/article/details/109670194)
+* [mysql语句](https://www.cnblogs.com/zquan/p/9635019.html)
+* [阿里云安装MySql](https://blog.csdn.net/qq_45441466/article/details/109670194)
 
 
