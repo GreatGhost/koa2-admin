@@ -17,9 +17,34 @@
 - 连接数据库失败：config值取用错误、使用了内网ip
 - 查询where语句，字段是中文时，字符串模板需要增加 ''
 - token校验的时候，next前面为什么需要增加await? 
+
+### 部署的问题
+- 3000端口连接不到; 添加安全组后还是连接不上 防火墙没有添加端口号
+[一文解决阿里云配置服务器端口无法连接问题汇总](https://blog.csdn.net/m0_52255061/article/details/121375530)\
+
+```
+    firewall-cmd --zone=public --add-port=80/tcp --permanent
+    systemctl restart firewalld.service
+    firewall-cmd --list-ports
+````
+- 前端部署 8001端口没有出现
+[前端部署参考文案](https://www.cnblogs.com/tyrone2005/p/10298702.html)
+* 先查看 
+netstat -tlunp
+ps -ef | grep nginx
+[nginx 配置serve](https://www.cnblogs.com/jyughynj/p/11207890.html)
+查看开启端口
+nginx 重启失败
+nginx -s reload 报错解决如下
+nginx -c /usr/local/nginx/conf/nginx.conf (https://zhuanlan.zhihu.com/p/79823651)
 ### 微信公众号开发系列问题整理
 - natapp安装地址请求请求不到问题 a.端口号要和本地服务端口号一致； b.本地地址不是127.0.0.1而是本地ip地址
 - 测试微信公众号平台配置URL提示配置失败原因：token没有配置正确
+### nginx 语法指南
+- nginx -s reload            # 重新载入配置文件
+- nginx -s reopen            # 重启 Nginx
+- nginx -s stop              # 停止 Nginx
+
 
 ### 参考文献
 * [koa2+MySQL项目](https://www.bbsmax.com/A/l1dygek0Je/)
