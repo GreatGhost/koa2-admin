@@ -4,8 +4,11 @@ async function checkToken(ctx, next) {
     // 如果是登录页、注册页无需token
     console.log('当前url',url)
     const noTokenList = [
+        '/',
         '/admin/login',
-        '/admin/register'
+        '/admin/register',
+        '/wechat',
+        '/wechat/event'
     ]
     if (noTokenList.includes(url) || url.indexOf('public')!=-1) {
         await next();
@@ -15,18 +18,19 @@ async function checkToken(ctx, next) {
             // 如果存在token，则解析token
             const tokenContent = jwt.verify(token, 'kuaifengle');
             const { time, timeout } = tokenContent;
+            
             let date = new Date().getTime();
             if ((date - time) <= timeout) {
                 await next()
             } else {
                 ctx.body = {
-                    status: 405,
+                    code: 405,
                     msg: 'token已过期，请重新登录'
                 }
             }
         } else {
             ctx.body = {
-                status: 401,
+                code: 401,
                 msg: '当前未登录，请先登录'
             }
         }

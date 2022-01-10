@@ -7,9 +7,9 @@ const Router =require('koa-router')
 const adminApiConfig=require('../controls/admin')
 
 const adminRouter= new Router({
-    prefix:'/admin'
+    prefix:'/admin',
 })
-
+adminRouter.post('/users',adminApiConfig.adminUsers);
 adminRouter.post('/login',adminApiConfig.adminSignIn);
 adminRouter.post('/register',adminApiConfig.adminSignUp)
 

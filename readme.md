@@ -17,12 +17,17 @@
 - 连接数据库失败：config值取用错误、使用了内网ip
 - 查询where语句，字段是中文时，字符串模板需要增加 ''
 - token校验的时候，next前面为什么需要增加await? 
+### 微信公众号开发系列问题整理
+- natapp安装地址请求请求不到问题 a.端口号要和本地服务端口号一致； b.本地地址不是127.0.0.1而是本地ip地址
+- 测试微信公众号平台配置URL提示配置失败原因：token没有配置正确
 
 ### 参考文献
 * [koa2+MySQL项目](https://www.bbsmax.com/A/l1dygek0Je/)
 * [koa2+MySQL项目](https://www.bbsmax.com/A/WpdK6Xp15V/)
 * [jwt校验设置](https://www.cnblogs.com/zxuedong/p/12629269.html)
 
+* [微信公众号登录](https://blog.csdn.net/weixin_45418036/article/details/96298817)
+* [Koa2微信公众号开发](https://blog.csdn.net/weixin_34143774/article/details/88852927)
 
 PS. 有错误或者建议，欢迎在issues留言；如果觉得写得还可以，欢迎来个star
 >>> 读一本好书，就是在和高尚的人谈话。 **——歌德**
