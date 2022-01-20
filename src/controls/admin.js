@@ -27,6 +27,10 @@ const adminSignIn = async (ctx, next) => {
           ctx.body = {
             code: 0,
             msg: "成功",
+            data:{
+              username:result.user_name,
+              id:result.id
+            },
             token,
           };
         }
@@ -54,15 +58,28 @@ const adminSignUp = async (ctx, next) => {
       msg: "用户已存在",
     };
   } else {
+    var id=UUID.v1();
+
     await userModel
-      .addUser([UUID.v1(), formData.username, formData.password])
+      .addUser([id, formData.username, formData.password])
       .then((res) => {
+        var token=createToken({
+          user_name:formData.username,
+          id:id,
+        })
+        ctx.request.headers.authorization=token;
         ctx.body = {
           code: 0,
           msg: "成功",
+          token:token,
+          data:{
+            id:id,
+            username:formData.username
+          }
         };
       })
       .catch((err) => {
+        console.log(err);
         ctx.body = {
           code: 100,
           msg: err,
@@ -73,16 +90,22 @@ const adminSignUp = async (ctx, next) => {
 
 // 获取所有用户
 const adminUsers= async(ctx,next)=>{
-    const res=await userModel.findAllUser();
+    const formData = ctx.request.body;
+    const {page,pagesize}=formData;
+    const res=await userModel.findAllUser(page,pagesize);
+    const count=await  userModel.findUserCount();
+    console.log('用户数',count);
     if(res.length){
         ctx.body={
             code:0,
-            data:res
+            data:res,
+            total:count[0]['count(*)']
         }
     }else{
         ctx.body={
             code:0,
-            data:[]
+            data:[],
+            total:count[0]['count(*)']
         }
     }
 }

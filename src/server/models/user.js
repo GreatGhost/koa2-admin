@@ -9,12 +9,19 @@ const findUser = (val) => {
   return query(_sql);
 };
 
-const findAllUser = () => {
-  let _sql = `SELECT * FROM user`;
+const findAllUser = (page,pagesize) => {
+  let start = (page-1) * pagesize;
+  let end =(page) * pagesize;
+  let _sql = `SELECT * FROM user limit ${start},${end}`;
   return query(_sql);
 };
+const findUserCount=()=>{
+  let _sql= `SELECT count(*) FROM user`;
+  return query(_sql)
+}
 module.exports = {
   addUser,
   findUser,
-  findAllUser
+  findAllUser,
+  findUserCount
 };

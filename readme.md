@@ -40,10 +40,7 @@ nginx -c /usr/local/nginx/conf/nginx.conf (https://zhuanlan.zhihu.com/p/79823651
 ### 微信公众号开发系列问题整理
 - natapp安装地址请求请求不到问题 a.端口号要和本地服务端口号一致； b.本地地址不是127.0.0.1而是本地ip地址
 - 测试微信公众号平台配置URL提示配置失败原因：token没有配置正确
-### nginx 语法指南
-- nginx -s reload            # 重新载入配置文件
-- nginx -s reopen            # 重启 Nginx
-- nginx -s stop              # 停止 Nginx
+
 
 
 ### 参考文献
