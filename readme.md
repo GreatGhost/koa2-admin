@@ -8,7 +8,7 @@
     post(请求体方式：x-www-form-urlencoded=>ctx.request.body)
 - jwt设置 jsonwebtoken 实现原理简单了解 ok
 - 静态文件获取 
-- 图片上传
+- 图片上传 ok 
 - 在线压缩视频
 - 在线截取视频
 
@@ -17,7 +17,11 @@
 - 连接数据库失败：config值取用错误、使用了内网ip
 - 查询where语句，字段是中文时，字符串模板需要增加 ''
 - token校验的时候，next前面为什么需要增加await? 
-
+- 图片上传失败原因 
+```
+    1. 引入了koaBody 中间件导致无法获取file
+    2. path.resolve, path.join __dirname理解有误，导致路径好获取失败
+```
 ### 部署的问题
 - 3000端口连接不到; 添加安全组后还是连接不上 防火墙没有添加端口号
 [一文解决阿里云配置服务器端口无法连接问题汇总](https://blog.csdn.net/m0_52255061/article/details/121375530)\

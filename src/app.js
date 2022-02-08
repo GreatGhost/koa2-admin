@@ -2,7 +2,7 @@
  * @Author: Today.luke 
  * @Date: 2021-12-31 14:45:15 
  * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2022-01-10 11:05:05
+ * @Last Modified time: 2022-01-24 18:10:54
  */
 
 const Koa = require('koa')
@@ -11,14 +11,10 @@ const cors = require('koa2-cors');
 const bodyparser = require('koa-bodyparser');
 const static = require('koa-static');
 const checkToken = require('./server/token/checkToken');
-// const XMLParser = require('./middlewares/XMLParser2')
 const app = new Koa();
-// const {CACHE}=require('./config')
 
 
 
-// 使用ctx.body解析中间件
-// app.use(XMLParser)
 app.use(bodyparser());
 // 解决跨域
 app.use(cors());
