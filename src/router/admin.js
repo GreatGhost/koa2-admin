@@ -10,6 +10,7 @@ const adminRouter= new Router({
     prefix:'/admin',
 })
 adminRouter.post('/users',adminApiConfig.adminUsers);
+adminRouter.post('/deleteUsers',adminApiConfig.delUser);
 adminRouter.post('/login',adminApiConfig.adminSignIn);
 adminRouter.post('/register',adminApiConfig.adminSignUp)
 
